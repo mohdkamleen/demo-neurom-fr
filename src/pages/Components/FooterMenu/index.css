@@ -10,8 +10,9 @@
     justify-content: space-around;
     align-items: center;  
     border-top: 2px solid rgb(236, 236, 236) ; 
-    z-index: 999;  
+    z-index: 999 !important;  
     transition: .5s;
+    background: white;
 } 
 .footer-menu-icon{
     font-size: 21px;
