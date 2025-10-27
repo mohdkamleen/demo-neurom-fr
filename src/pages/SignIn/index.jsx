@@ -1,20 +1,28 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import "./index.css";  
+import "./index.css";
 import { ArrowLeftOutlined, CheckCircleFilled, CheckCircleOutlined, EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 
 export default function SignIn() {
-  const [userId, setUserId] = useState("");
-  const [password, setPassword] = useState("");
+  const [userId, setUserId] = useState("admin_test");
+  const [password, setPassword] = useState("demo81788");
   const [showPassword, setShowPassword] = useState(false);
   const navigate = useNavigate();
 
   const handleSubmit = (e) => {
-    e.preventDefault();
-    if (password.length >= 8 && /[^A-Za-z0-9]/.test(password)) {
-      navigate("/home");
+    e.preventDefault(); 
+    if (!userId) {
+      alert("Please enter User ID");
+      return;
+    }
+    if (!password) {
+      alert("Please enter Password");
+      return;
+    }
+    if (userId === "admin_test" && password === "demo81788") {
+      navigate("/home", { replace: true });
     } else {
-      alert("Password must have 8+ chars and 1 special character.");
+      alert("Invalid User ID or Password");
     }
   };
 
@@ -36,7 +44,7 @@ export default function SignIn() {
           value={userId}
           onChange={(e) => setUserId(e.target.value)}
           required
-        /> 
+        />
 
         <label htmlFor="password">
           Password<span className="required">*</span>
@@ -60,17 +68,17 @@ export default function SignIn() {
         </div>
 
         <p className="hint">
-        <span><CheckCircleFilled style={{color:"#c4c4c4",fontSize:"15px"}} /> &nbsp; Must be at least 8 characters & one special <br/> &ensp;&ensp;&ensp; character </span> 
-        <span><CheckCircleFilled style={{color:"#4F46E5",fontSize:"15px"}} /> &nbsp; Remember my password for easy future<br /> &ensp;&ensp;&ensp; logins.</span>
+          <span><CheckCircleFilled style={{ color: "#c4c4c4", fontSize: "15px" }} /> &nbsp; Must be at least 8 characters & one special <br /> &ensp;&ensp;&ensp; character </span>
+          <span><CheckCircleFilled style={{ color: "#4F46E5", fontSize: "15px" }} /> &nbsp; Remember my password for easy future<br /> &ensp;&ensp;&ensp; logins.</span>
         </p>
- 
+
       </form>
 
       <footer className="signin-footer">
-        <button type="submit" className="finish-btn">
+        <button onClick={handleSubmit} className="finish-btn">
           Finish Sign In
-        </button> <br/>
-        By continuing you are accepting our{" "} <br/>
+        </button> <br />
+        By continuing you are accepting our{" "} <br />
         <a href="#">Terms & Conditions</a> and{" "}
         <a href="#">Privacy Policy</a>
       </footer>

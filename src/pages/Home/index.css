@@ -14,10 +14,11 @@
   }
    
   .phone-screen .content {
-    padding: 20px;
+    margin: 20px;
     text-align: center;
     margin-top: 40px;
     color: #1a1a1a;
+    background-color: #f3f5f7; 
   }
   
   .phone-screen .content .welcome {
@@ -37,7 +38,7 @@
     margin-top: 10px;
   }
 
-  .sign-btn {
+  .add-food-data-btn {
     position: absolute;
     bottom: 62px;
     left: 50%;
@@ -55,6 +56,6 @@
     margin-bottom: 15px;
   }
   
-  .sign-btn:hover {
+  .add-food-data-btn:hover {
     background-color: #2735d1;
   }

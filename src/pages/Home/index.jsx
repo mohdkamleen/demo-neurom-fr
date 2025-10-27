@@ -1,31 +1,23 @@
-import React from "react";
-import { Link } from "react-router-dom";
 
-export default function Home() {
+import React, { use } from "react";
+import "./index.css";
+import { useNavigate } from "react-router-dom";
+import { message } from "antd";
+import { HddOutlined, PlusOutlined } from "@ant-design/icons";
+
+export default function Landing() {
+  const navigate = useNavigate();
+
   return (
-    <div className="phone-screen center-vertical">
-      <header className="phone-header">Home</header>
+    <div className="phone-screen">
 
-      <main className="phone-body">
-        <h3>No readings</h3>
-        <p>Log food data to see status and time-in-range here.</p>
-
-        <div className="home-actions">
-          <button className="ghost-button">Predict Blood Sugar</button>
-          <button className="primary-button">
-            + Add Food Data
-          </button>
-        </div>
-
-        <div className="unlock-area">
-          <p>Unlock by adding data</p>
-          <div className="lock-icon">🔒</div>
-        </div>
-
-        <Link to="/" className="link-inline">Back to Welcome</Link>
-      </main>
-
-      <footer className="phone-footer">Last synced: just now</footer>
+      <div className="content">
+        <HddOutlined style={{ color: "#4F46E5", fontSize: "35px", margin: "15px 0" }} />
+        <h2 style={{ margin: "15px 0" }}>No Readings</h2>
+        <h5 style={{ fontWeight: "400", fontSize: "15px", lineHeight: "25px" }}> Log Food Data to see status and time‑in‑range here</h5>
+        <button className="add-food-data-btn" onClick={_ => message.info("comming soon")}><PlusOutlined /> &nbsp; Add Food Data</button>
+        {/* <button className="pridict-blood-sugar-btn" onClick={_ => message.info("comming soon")}><PlusOutlined /> &nbsp; Add Food Data</button> */}
+      </div>
     </div>
   );
 }
