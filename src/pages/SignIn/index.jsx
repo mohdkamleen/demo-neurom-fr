@@ -9,6 +9,7 @@ export default function SignIn() {
   const [password, setPassword] = useState("@demo81788");
   const [showPassword, setShowPassword] = useState(false);  
   const [strongPassword, setStrongPassword] = useState(false);
+  const [rememberPassword, setRememberPassword] = useState(false);
 
   const navigate = useNavigate();
 
@@ -83,7 +84,7 @@ export default function SignIn() {
 
         <p className="hint">
           <span><CheckCircleFilled style={strongPassword ? { color: "#4F46E5", fontSize: "15px" } : { color: "#c4c4c4", fontSize: "15px" }} /> &nbsp; Must be at least 8 characters & one special <br /> &ensp;&ensp;&ensp; character </span>
-          <span><CheckCircleFilled style={{ color: "#4F46E5", fontSize: "15px" }} /> &nbsp; Remember my password for easy future<br /> &ensp;&ensp;&ensp; logins.</span>
+          <span style={{cursor:"pointer"}} onClick={_ => setRememberPassword(!rememberPassword)}><CheckCircleFilled style={rememberPassword ? { color: "#4F46E5", fontSize: "15px" } : { color: "#c4c4c4", fontSize: "15px" }} /> &nbsp; Remember my password for easy future<br /> &ensp;&ensp;&ensp; logins.</span>
         </p>
 
       </form>
