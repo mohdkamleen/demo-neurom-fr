@@ -4,15 +4,9 @@
   padding: 0;
 }
 
-html,body,#root {
-  height: 100%; 
+html,body,#root { 
   font-family: Inter, system-ui, -apple-system, "Segoe UI", Roboto, "Helvetica Neue", Arial;
-  background: #0b1020;
-  color: white;
+  background: #0b1020; 
+  color: #1a1a1a;
 }
-
-.title {
-  text-align: center;
-  color: #ddd; 
-  font-size: 18px;
-}
+ 

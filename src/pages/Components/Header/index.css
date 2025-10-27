@@ -1,0 +1,21 @@
+.header-container{ 
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 15px 20px; 
+    color: #1a1a1a;
+}
+
+.header-container div{
+    display: flex;
+    align-items: center;
+    gap: 15px;
+}
+
+.header-container .ant-segmented-item {
+    border-radius: 20px; 
+} 
+.header-container .ant-segmented-item-selected { 
+    background-color: #4e46e531;
+    color: white;
+} 
