@@ -39,7 +39,7 @@
 
   .sign-btn {
     position: absolute;
-    bottom: 62px;
+    bottom: 60px;
     left: 50%;
     transform: translateX(-50%);
     background-color: #4F46E5;
