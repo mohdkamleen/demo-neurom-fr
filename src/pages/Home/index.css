@@ -1,14 +1,9 @@
   .home-phone-screen {
-    width: 360px;
-    height: 100%;
-    position: absolute;
-    top: 0;
-    left: 50%;
-    transform: translateX(-50%);
+    width: 360px;    
     background: #ffffff;
     border-radius: 10px;
     box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);
-    font-family: "Inter", sans-serif; 
+    font-family: "Inter", sans-serif;   
   }
 
   .home-phone-screen .content {

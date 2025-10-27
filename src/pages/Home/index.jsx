@@ -25,7 +25,7 @@ export default function Landing() {
         <button className="add-food-data-btn" onClick={_ => message.info("comming soon")}><PlusOutlined /> &nbsp; Add Food Data</button>
         <button className="pridict-blood-sugar-btn" onClick={_ => message.info("comming soon")}><FaBrain style={{ fontSize: "17px" }} /> &nbsp; Predict Blood Sugar </button>
       </div>
-      <FooterMenu />
+
       <h4 style={{ margin: "30px 0 20px 20px" }}>Your Insights</h4>
       <div class="content2">
         <div class="overlay">
@@ -61,32 +61,33 @@ export default function Landing() {
         </div>
 
         <div className="bottom-container">
-        <div>
-          <h4>Top Impact Foods (7d) </h4> &nbsp;
+          <div>
+            <h4>Top Impact Foods (7d) </h4> &nbsp;
+          </div>
+          <div>
+            <p>Granola bar</p>
+            <button>Why?</button>
+          </div>
+          <div>
+            <p>Granola bar</p>
+            <button>Why?</button>
+          </div>
+          <div>
+            <p>Granola bar</p>
+            <button>Why?</button>
+          </div>
+          <div>
+            <h4> View full report <ArrowRightOutlined style={{ fontSize: "15px" }} /></h4> &nbsp;
+          </div>
         </div>
-        <div>
-          <p>Granola bar</p>
-          <button>Why?</button>
-        </div>
-        <div>
-          <p>Granola bar</p>
-          <button>Why?</button>
-        </div>
-        <div>
-          <p>Granola bar</p>
-          <button>Why?</button>
-        </div>
-        <div>
-          <h4> View full report <ArrowRightOutlined style={{fontSize:"15px"}} /></h4> &nbsp;
-        </div>
- 
-        </div>
-
-
-
-
-      </div>    
       </div>
+      <br />      <br />      <br />      <br /> <br />      <br />
+
+
+ 
+      <FooterMenu  /> 
+
+    </div>
 
   );
 }

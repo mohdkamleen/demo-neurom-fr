@@ -9,18 +9,7 @@ import { TiHome } from 'react-icons/ti'
 import { MdAddCircle } from 'react-icons/md'
 
 const FooterMenu = () => { 
-    const location = useLocation()
-    const navigate = useNavigate() 
-    var prevScrollpos = window.pageYOffset;
-    window.onscroll = function () {
-        var currentScrollPos = window.pageYOffset;
-        if (prevScrollpos > currentScrollPos) {
-            document.getElementsByClassName("footer-menu-container")[0].style.bottom = "0";
-        } else {
-            document.getElementsByClassName("footer-menu-container")[0].style.bottom = "-60px";
-        }
-        prevScrollpos = currentScrollPos;
-    }
+    const location = useLocation() 
 
     return (
         <div className='footer-menu-container'>
