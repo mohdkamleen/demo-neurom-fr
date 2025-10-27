@@ -2,12 +2,26 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
 import { ArrowLeftOutlined, CheckCircleFilled, CheckCircleOutlined, EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
+import { message } from "antd";
 
 export default function SignIn() {
   const [userId, setUserId] = useState("admin_test");
-  const [password, setPassword] = useState("demo81788");
-  const [showPassword, setShowPassword] = useState(false);
+  const [password, setPassword] = useState("@demo81788");
+  const [showPassword, setShowPassword] = useState(false);  
+  const [strongPassword, setStrongPassword] = useState(false);
+
   const navigate = useNavigate();
+
+  const handlePassword = e =>{
+    e.preventDefault()
+    var val = e.target.value
+    setPassword(val) 
+    if(/^(?=.*[!@#$%^&*()_\-+=[\]{};:'"\\|,.<>/?`~]).{8,}$/.test(password)) {
+        setStrongPassword(true)
+    } else {
+      setStrongPassword(false)
+    }
+  }
 
   const handleSubmit = (e) => {
     e.preventDefault(); 
@@ -19,7 +33,7 @@ export default function SignIn() {
       alert("Please enter Password");
       return;
     }
-    if (userId === "admin_test" && password === "demo81788") {
+    if (userId === "admin_test" && password === "@demo81788") {
       navigate("/home", { replace: true });
     } else {
       alert("Invalid User ID or Password");
@@ -55,7 +69,7 @@ export default function SignIn() {
             type={showPassword ? "text" : "password"}
             placeholder="Create a new Password"
             value={password}
-            onChange={(e) => setPassword(e.target.value)}
+            onChange={handlePassword}
             required
           />
           <span
@@ -68,7 +82,7 @@ export default function SignIn() {
         </div>
 
         <p className="hint">
-          <span><CheckCircleFilled style={{ color: "#c4c4c4", fontSize: "15px" }} /> &nbsp; Must be at least 8 characters & one special <br /> &ensp;&ensp;&ensp; character </span>
+          <span><CheckCircleFilled style={strongPassword ? { color: "#4F46E5", fontSize: "15px" } : { color: "#c4c4c4", fontSize: "15px" }} /> &nbsp; Must be at least 8 characters & one special <br /> &ensp;&ensp;&ensp; character </span>
           <span><CheckCircleFilled style={{ color: "#4F46E5", fontSize: "15px" }} /> &nbsp; Remember my password for easy future<br /> &ensp;&ensp;&ensp; logins.</span>
         </p>
 
