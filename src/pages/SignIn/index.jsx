@@ -5,8 +5,8 @@ import { ArrowLeftOutlined, CheckCircleFilled, CheckCircleOutlined, EyeInvisible
 import { message } from "antd";
 
 export default function SignIn() {
-  const [userId, setUserId] = useState("admin_test");
-  const [password, setPassword] = useState("@demo81788");
+  const [userId, setUserId] = useState("");
+  const [password, setPassword] = useState("");
   const [showPassword, setShowPassword] = useState(false);  
   const [strongPassword, setStrongPassword] = useState(false);
   const [rememberPassword, setRememberPassword] = useState(false);
@@ -34,6 +34,11 @@ export default function SignIn() {
       alert("Please enter Password");
       return;
     }
+     if(!/^(?=.*[!@#$%^&*()_\-+=[\]{};:'"\\|,.<>/?`~]).{8,}$/.test(password)) {
+      alert("Password not strong!")
+      return
+     }
+
     if (userId === "admin_test" && password === "@demo81788") {
       navigate("/home", { replace: true });
     } else {
