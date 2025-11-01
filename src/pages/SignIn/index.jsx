@@ -47,10 +47,12 @@ export default function SignIn() {
   };
 
   return (
-    <div className="signin-screen">
+    <div className="top-header-screen">
       <div className="top-bar">
+        <div>
         <span onClick={_ => navigate(-1)} className="back-arrow"><ArrowLeftOutlined /></span>
         <h2>Sign In</h2>
+        </div>
       </div>
 
       <form className="signin-form" onSubmit={handleSubmit}>

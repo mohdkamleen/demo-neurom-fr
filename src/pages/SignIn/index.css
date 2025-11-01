@@ -1,5 +1,5 @@
 /* ===== SignIn Page Styles ===== */
-.signin-screen {
+.top-header-screen {
   width: 360px;
   height: 100%;
   position: absolute;
@@ -84,6 +84,7 @@
   align-items: start; 
   color: #1a1a1a;
   gap: 15px;  
+  letter-spacing: .5px;
   font-size: 13px;
   line-height: 20px;
 }

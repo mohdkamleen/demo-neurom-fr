@@ -1,0 +1,84 @@
+ 
+.top-header-screen {
+  width: 360px;
+  height: 100%;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #ffffff;
+  border-radius: 10px;
+  /* box-shadow: 0 10px 40px rgba(0, 0, 0, 0.2);    */
+  font-family: "Inter", sans-serif; 
+}
+
+.top-bar{
+  display: flex;  
+  align-items: center;  
+  justify-content: space-between;
+}
+
+.top-bar div {
+  display: flex; 
+  align-items: center; 
+  font-size: 14px;
+  color: #333; 
+}
+
+.top-bar div .back-arrow {
+  font-size: 18px;
+  margin-bottom: 10px;  
+  cursor: pointer;
+}
+
+.top-bar div h2 { 
+  font-weight: 400; 
+  padding: 0 10px;
+}
+ 
+.predict-body{ 
+  color: #767676; 
+}
+.predict-body .we-ll-text{
+  font-size: 14px;
+  letter-spacing: .5px;
+  line-height: 30px; 
+  margin: 0px 20px 15px 20px;
+  display: block;
+}
+ 
+.predict-body .single-btn{
+  display: block;
+  margin: auto;
+  width: 328px;
+  height: 92px; 
+  margin-top: 16px;
+  border-radius: 10px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 15px;
+  border: 2px solid #40404065;
+  cursor: pointer;
+  transition: .3s;
+}
+
+.predict-body .single-btn:hover{
+  box-shadow: 0px 0px 10px #4e46e542;
+}
+
+.predict-body .single-btn div{
+  display: flex;
+  flex-direction: column; 
+  padding: 10px 15px 0 15px;
+} 
+.predict-body .single-btn div h4{
+  color: #4F46E5; 
+  font-weight: 600;
+}
+.predict-body .single-btn div p{ 
+  letter-spacing: .5px;
+  line-height: 20px;
+  font-size: 14px;
+}
+ 
