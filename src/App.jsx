@@ -6,6 +6,7 @@ import Home from "./pages/Home";
 import Predict from "./pages/Predict";
 import 'antd/dist/reset.css'; // For AntD v5+
 import ManualEntry from "./pages/ManualEntry";
+import FileUpload from "./pages/UploadFoodDetails";
 
 
 function App() {
@@ -17,6 +18,7 @@ function App() {
           <Route path="/home" element={<Home />} />
           <Route path="/predict" element={<Predict />} />
           <Route path="/manualentry" element={<ManualEntry />} />
+          <Route path="/fileupload" element={<FileUpload />} />
         </Routes>
       </div> 
   );

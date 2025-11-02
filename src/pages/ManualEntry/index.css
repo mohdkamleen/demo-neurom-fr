@@ -124,6 +124,7 @@
   gap: 10px;
   border-radius: 5px;
   border: none;
+  background: transparent;
   font-weight: 600;
   cursor: pointer;
   font-size: 15px;
@@ -140,80 +141,3 @@
   display: flex;
   gap: 10px;
 }
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-.predict-body{ 
-  color: #767676; 
-}
-.predict-body .we-ll-text{
-  font-size: 14px;
-  letter-spacing: .5px;
-  line-height: 30px; 
-  margin: 0px 20px 15px 20px;
-  display: block;
-}
- 
-.predict-body .single-btn{
-  display: block;
-  margin: auto;
-  width: 328px;
-  height: 92px; 
-  margin-top: 16px;
-  border-radius: 10px;
-  display: flex;
-  align-items: center;
-  justify-content: space-between;
-  padding: 15px;
-  border: 2px solid #40404065;
-  cursor: pointer;
-  transition: .3s;
-}
-
-.predict-body .single-btn:hover{
-  box-shadow: 0px 0px 10px #4e46e542;
-}
-
-.predict-body .single-btn div{
-  display: flex;
-  flex-direction: column; 
-  padding: 10px 15px 0 15px;
-} 
-.predict-body .single-btn div h4{
-  color: #4F46E5; 
-  font-weight: 600;
-}
-.predict-body .single-btn div p{ 
-  letter-spacing: .5px;
-  line-height: 20px;
-  font-size: 14px;
-}
- 

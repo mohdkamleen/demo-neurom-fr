@@ -73,7 +73,7 @@ export default function ManualEntry() {
           />
 
           <label htmlFor="userId">
-            Food Name <span className="required">*</span>
+            Food Name<span className="required">*</span>
           </label>
           <input
             type="text"
@@ -82,7 +82,7 @@ export default function ManualEntry() {
           />
 
           <label htmlFor="userId">
-            Food Type <span className="required">*</span>
+            Food Type<span className="required">*</span>
           </label>
           <Select className="select" value={"Breakfast"}>
             <Select.Option value="Breakfast"></Select.Option>
@@ -92,7 +92,7 @@ export default function ManualEntry() {
 
 
           <label htmlFor="userId">
-            Serving Size <span className="required">*</span>
+            Serving Size<span className="required">*</span>
           </label>
           <input
             type="text"
@@ -101,21 +101,56 @@ export default function ManualEntry() {
           />
 
           <label htmlFor="userId">
-            Number of Servings <span className="required">*</span>
+            Number of Servings<span className="required">*</span>
           </label>
           <div className="number-servings-btn-group">
-            <input style={{padding:"0 25px ",fontSize:"30px"}} type="button" value={"-"} />
+            <input style={{ padding: "0 25px ", fontSize: "30px" }} type="button" value={"-"} />
             <input
-            style={{textAlign:"center",width:"150px"}}
-              type="text" 
+              style={{ textAlign: "center", width: "150px" }}
+              type="text"
               value={1}
               required
             />
-            <input style={{padding:"0 25px ",fontSize:"30px"}} type="button" value={"+"} /> 
+            <input style={{ padding: "0 25px ", fontSize: "30px" }} type="button" value={"+"} />
           </div>
 
+          <div style={{ display: "flex",justifyContent:"space-between",alignItems:"center",marginTop:"-20px" }}>
+            <label htmlFor="userId">
+              Carbs<span className="required">*</span>
+            </label>
+            <input
+            style={{width:"134px"}}
+              type="text"
+              placeholder="ex: 50"
+              required
+            />
+          </div>
 
-          <button type="submit" className="add-another-food-btn">
+          <div style={{ display: "flex",justifyContent:"space-between",alignItems:"center",marginTop:"-20px" }}>
+            <label htmlFor="userId">
+              Clories<span className="required">*</span>
+            </label>
+            <input
+            style={{width:"134px"}}
+              type="text"
+              placeholder="ex: 100"
+              required
+            />
+          </div>
+
+          <div style={{ display: "flex",justifyContent:"space-between",alignItems:"center",marginTop:"-20px" }}>
+            <label htmlFor="userId">
+              Fiber<span className="required">*</span>
+            </label>
+            <input
+            style={{width:"134px"}}
+              type="text"
+              placeholder="ex: 65"
+              required
+            />
+          </div>
+
+          <button className="add-another-food-btn">
             <FaPlus style={{ fontSize: "18px" }} />  Add another food
           </button>
 
