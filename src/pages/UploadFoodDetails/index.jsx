@@ -4,12 +4,13 @@ import "./index.css";
 import { ArrowLeftOutlined, CheckCircleFilled, CheckCircleOutlined, EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
 import FooterMenu from "../Components/FooterMenu";
 import { FaAngleRight, FaChevronRight, FaDownload, FaKeyboard, FaQrcode, FaQuestionCircle, FaRegQuestionCircle, FaUpload } from "react-icons/fa";
-import { message } from "antd";
+import BottomModalSelectFile from "../Components/BottomModalSelectFile";
 import { CiCircleAlert, CiCircleQuestion } from "react-icons/ci";
 import { IoAlertCircleOutline } from "react-icons/io5";
 
 export default function FileUpload() {
   const navigate = useNavigate();
+  const [openModal, setOpenModal] = useState(false)
 
   //We'll estimate a likely post-meal glucose range More logged meals → better confidence
   return (
@@ -27,7 +28,7 @@ export default function FileUpload() {
       <div className="upload-food-body">
         <p className="we-ll-text">We'll parse your meals, you'll confirm rows, then we'll estimate your glucose range.</p>
         <div className="content-data-section">
-          <div style={{ display: "flex", alignItems: "center", gap: "5px" }}>
+          <div style={{ display: "flex", alignItems: "center", gap: "5px", margin: "7px 0" }}>
             <CiCircleQuestion style={{ color: "#4F46E5", fontSize: "20px", marginBottom: "7px" }} /> <h4>Sample data</h4>
           </div>
           <div className="table-details-formate">
@@ -62,24 +63,26 @@ export default function FileUpload() {
             <p>Download sample template (.xlsx)</p>
           </div>
 
-          <div style={{ marginTop: "15px", fontSize: "14px", color: "#4F46E5", fontWeight: "600", display: "flex", alignItems: "center", gap: "10px" }}>
+          <div style={{ marginTop: "10px", fontSize: "14px", color: "#4F46E5", fontWeight: "600", display: "flex", alignItems: "center", gap: "10px" }}>
             <IoAlertCircleOutline style={{ marginBottom: "15px", fontSize: "17px" }} />
             <p>See formatting rules</p>
           </div>
 
 
-      <footer className="file-upload-footer">
-        <button className="upload-btn">
-         <FaUpload style={{margin:"2px 7px 0 0"}} /> <span>Upload File</span>
-        </button>
-         <br />
-       <div style={{fontSize:"13px",lineHeight:"20px",letterSpacing:".5px"}}>Supported formats: .xlsx, .csv, .pdf <br /> Max file size 10MB</div>
-      </footer>
+          <footer className="file-upload-footer">
+            <button className="upload-btn" onClick={_ => setOpenModal(true)}>
+              <FaUpload style={{ margin: "2px 7px 0 0" }} /> <span>Upload File</span>
+            </button>
+            <br />
+            <div style={{ fontSize: "13px", lineHeight: "20px", letterSpacing: ".5px" }}>Supported formats: .xlsx, .csv, .pdf <br /> Max file size 10MB</div>
+          </footer>
 
         </div>
       </div>
 
-
+      {openModal &&
+        <BottomModalSelectFile onClose={_ => setOpenModal(false)} />
+      }
     </div>
   );
 }
