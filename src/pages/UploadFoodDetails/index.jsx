@@ -10,7 +10,7 @@ import { IoAlertCircleOutline } from "react-icons/io5";
 
 export default function FileUpload() {
   const navigate = useNavigate();
-  const [openModal, setOpenModal] = useState(false)
+  const [modal, setModal] = useState("")
 
   //We'll estimate a likely post-meal glucose range More logged meals → better confidence
   return (
@@ -70,7 +70,7 @@ export default function FileUpload() {
 
 
           <footer className="file-upload-footer">
-            <button className="upload-btn" onClick={_ => setOpenModal(true)}>
+            <button className="upload-btn" onClick={_ => setModal("SelectFile")}>
               <FaUpload style={{ margin: "2px 7px 0 0" }} /> <span>Upload File</span>
             </button>
             <br />
@@ -80,9 +80,8 @@ export default function FileUpload() {
         </div>
       </div>
 
-      {openModal &&
-        <BottomModalSelectFile onClose={_ => setOpenModal(false)} />
-      }
+      {modal === "SelectFile" && <BottomModalSelectFile modal={e => setModal(e)} /> }
+        {console.log(modal) }
     </div>
   );
 }

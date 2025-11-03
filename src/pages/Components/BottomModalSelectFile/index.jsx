@@ -8,19 +8,19 @@ import { FaBrain, FaChevronRight, FaCloud, FaHome, FaInfoCircle, FaMobile, FaPho
 import { TiHome } from 'react-icons/ti'
 import { MdAddCircle } from 'react-icons/md'
 
-const BottomModalSelectFile = ({onClose}) => {
+const BottomModalSelectFile = ({modal}) => {
     const location = useLocation()
 
     return (
-        <div class="file-upload-modal-box">
-            <div class="modal-content">
-                <div class="modal-header">
+        <div className="file-upload-modal-box">
+            <div className="modal-content">
+                <div className="modal-header">
                     <h3>Select File</h3>
-                    <button class="close-btn" onClick={onClose}>&times;</button>
+                    <button className="close-btn" onClick={_ => modal("")}>&times;</button>
                 </div>
                 <p style={{color:"gray"}}>Choose an Excel/CSV/PDF to start.</p>
 
-                <div class="upload-options">
+                <div className="upload-options">
 
                     <div className="single-btn" >
                         <FaMobile style={{ background: "#4F46E52e", width: "40px", height: "40px", padding: "10px", color: "#4F46E5", borderRadius: "7px" }} />
@@ -40,7 +40,7 @@ const BottomModalSelectFile = ({onClose}) => {
                         <FaChevronRight style={{ fontSize: "15px", color: "#4F46E5" }} />
                     </div>
 
-                    <div class="option">
+                    <div className="option">
                         <FaInfoCircle style={{fontSize:"35px",paddingRight:"10px"}} />
                         Formats: .xlsx, .csv, .pdf . Max 20 MB . One file at a time
                     </div>
