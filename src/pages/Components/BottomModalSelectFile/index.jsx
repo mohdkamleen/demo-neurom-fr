@@ -22,7 +22,7 @@ const BottomModalSelectFile = ({modal}) => {
 
                 <div className="upload-options">
 
-                    <div className="single-btn" >
+                    <div className="single-btn" onClick={_ => modal("UploadFile")} >
                         <FaMobile style={{ background: "#4F46E52e", width: "40px", height: "40px", padding: "10px", color: "#4F46E5", borderRadius: "7px" }} />
                         <div>
                             <h4>Choose from device</h4>

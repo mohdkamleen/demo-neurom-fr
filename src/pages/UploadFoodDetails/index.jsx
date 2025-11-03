@@ -7,6 +7,7 @@ import { FaAngleRight, FaChevronRight, FaDownload, FaKeyboard, FaQrcode, FaQuest
 import BottomModalSelectFile from "../Components/BottomModalSelectFile";
 import { CiCircleAlert, CiCircleQuestion } from "react-icons/ci";
 import { IoAlertCircleOutline } from "react-icons/io5";
+import BottomModalUploadFile from "../Components/BottomModalUploadFile";
 
 export default function FileUpload() {
   const navigate = useNavigate();
@@ -81,7 +82,8 @@ export default function FileUpload() {
       </div>
 
       {modal === "SelectFile" && <BottomModalSelectFile modal={e => setModal(e)} /> }
-        {console.log(modal) }
+      {modal === "UploadFile" && <BottomModalUploadFile modal={e => setModal(e)} /> }
+
     </div>
   );
 }
