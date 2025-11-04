@@ -10,7 +10,7 @@ import { MdAddCircle } from 'react-icons/md'
 import { useDispatch, useSelector } from 'react-redux'
 import { setModalType } from '../../../redux/fileSlice'
 
-const BottomModalUploadFile = () => {
+const BottomModalSaveData = () => {
     const location = useLocation()
     const navigate = useNavigate()
     const dispatch = useDispatch()
@@ -59,4 +59,4 @@ const BottomModalUploadFile = () => {
     )
 }
 
-export default BottomModalUploadFile
+export default BottomModalSaveData

@@ -2,16 +2,20 @@ import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import "./index.css";
 import { ArrowLeftOutlined, CheckCircleFilled, CheckCircleOutlined, EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
-import FooterMenu from "../Components/FooterMenu";
+import BottomModalSaveData from "../Components/BottomModalSaveData";
 import { FaAngleRight, FaChevronRight, FaDownload, FaKeyboard, FaQrcode, FaQuestionCircle, FaRegQuestionCircle, FaUpload } from "react-icons/fa";
 import BottomModalSelectFile from "../Components/BottomModalSelectFile";
 import { CiCircleAlert, CiCircleQuestion } from "react-icons/ci";
 import { IoAlertCircleOutline } from "react-icons/io5";
-import BottomModalUploadFile from "../Components/BottomModalUploadFile";
+import BottomModalUploadFile from "../Components/BottomModalUploadFile"; 
+import BottomModalUploading from "../Components/BottomModalUploading";
+import { useDispatch, useSelector } from "react-redux";
+import { setModalType } from "../../redux/fileSlice";
 
 export default function FileUpload() {
-  const navigate = useNavigate();
-  const [modal, setModal] = useState("")
+  const navigate = useNavigate(); 
+  const dispatch = useDispatch()
+  const { modalType } = useSelector((state) => state.file);
 
   //We'll estimate a likely post-meal glucose range More logged meals → better confidence
   return (
@@ -71,7 +75,7 @@ export default function FileUpload() {
 
 
           <footer className="file-upload-footer">
-            <button className="upload-btn" onClick={_ => setModal("SelectFile")}>
+            <button className="upload-btn" onClick={_ => dispatch(setModalType(("SelectFile")))}>
               <FaUpload style={{ margin: "2px 7px 0 0" }} /> <span>Upload File</span>
             </button>
             <br />
@@ -80,9 +84,10 @@ export default function FileUpload() {
 
         </div>
       </div>
-
-      {modal === "SelectFile" && <BottomModalSelectFile modal={e => setModal(e)} /> }
-      {modal === "UploadFile" && <BottomModalUploadFile modal={e => setModal(e)} /> }
+      {/* <BottomModalSaveData /> */}
+      {modalType === "SelectFile" && <BottomModalSelectFile  /> }
+      {modalType === "UploadFile" && <BottomModalUploadFile  /> }
+      {modalType === "Uploading" && <BottomModalUploading  /> } 
 
     </div>
   );
