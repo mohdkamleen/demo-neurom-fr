@@ -45,7 +45,15 @@ const BottomModalUploading = () => {
       const sheetName = workbook.SheetNames[0];
       const sheet = workbook.Sheets[sheetName];
       const json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
-      dispatch(setFileInfo({ ...fileInfo, json }));
+      const jsonObj = XLSX.utils.sheet_to_json(sheet, { defval: "" });
+
+      if (!json || json.length === 0) {
+        alert("Error: Excel file is empty or invalid!");
+        dispatch(setModalType("SelectFile"));
+        return;
+      }
+      
+      dispatch(setFileInfo({ ...fileInfo, json: jsonObj }));
 
       const headerRow = json[0];
       setDetails({

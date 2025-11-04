@@ -7,6 +7,7 @@ import Predict from "./pages/Predict";
 import 'antd/dist/reset.css'; // For AntD v5+
 import ManualEntry from "./pages/ManualEntry";
 import FileUpload from "./pages/UploadFoodDetails";
+import PredictionSummary from "./pages/PredictionSummary";
 
 
 function App() {
@@ -19,6 +20,7 @@ function App() {
           <Route path="/predict" element={<Predict />} />
           <Route path="/manualentry" element={<ManualEntry />} />
           <Route path="/fileupload" element={<FileUpload />} />
+          <Route path="/predictionsummary" element={<PredictionSummary />} />
         </Routes>
       </div> 
   );

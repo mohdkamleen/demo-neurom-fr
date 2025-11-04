@@ -35,7 +35,7 @@ const BottomModalSaveData = () => {
                             <FaFileExcel style={{ background: "#10b9812e", width: "32px", padding: "7px", height: "32px", color: "#10B981", borderRadius: "5px" }} />
                             <div>
                                 <h4>{fileInfo?.name}</h4>
-                                <p style={{ fontSize: "12px", fontWeight: "700", marginTop: "10px" }}>{fileInfo?.json.length - 1} Meal data</p>
+                                <p style={{ fontSize: "12px", fontWeight: "700", marginTop: "10px" }}>{fileInfo?.json?.length} Meal data</p>
                                 <p>{fileInfo?.size}</p>
                             </div>
                             <FaRegTrashAlt  onClick={_ => dispatch(setModalType("SelectFile"))} style={{ marginLeft: "auto", color: "red", cursor: "pointer" }} />
@@ -49,7 +49,7 @@ const BottomModalSaveData = () => {
 
                     </div> 
 
-                    <button className='save-predict-btn' onClick={_ => dispatch(setModalType("Uploading"))} >
+                    <button className='save-predict-btn' onClick={_ => dispatch(setModalType("PredictBloodSugar"))} >
                         <FaBrain style={{ fontSize: "16px",marginBottom:"-3px" }} /> &nbsp; Save &amp; Predict Sugar
                     </button>
 

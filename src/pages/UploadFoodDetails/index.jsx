@@ -11,6 +11,7 @@ import BottomModalUploadFile from "../Components/BottomModalUploadFile";
 import BottomModalUploading from "../Components/BottomModalUploading";
 import { useDispatch, useSelector } from "react-redux";
 import { setModalType } from "../../redux/fileSlice";
+import BottomModalPredictBloodSugar from "../Components/BottomModalPredictBloodSugar";
 
 export default function FileUpload() {
   const navigate = useNavigate(); 
@@ -87,8 +88,9 @@ export default function FileUpload() {
       {modalType === "SelectFile" && <BottomModalSelectFile  /> }
       {modalType === "UploadFile" && <BottomModalUploadFile  /> }
       {modalType === "Uploading" && <BottomModalUploading  /> } 
-      {modalType === "SaveData" && <BottomModalSaveData  /> }
-
-    </div>
+      {modalType === "SaveData" && <BottomModalSaveData  /> } 
+      {modalType === "PredictBloodSugar" && <BottomModalPredictBloodSugar  /> }
+       
+           </div>
   );
 }
