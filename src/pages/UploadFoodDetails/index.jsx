@@ -7,16 +7,18 @@ import { FaAngleRight, FaChevronRight, FaDownload, FaKeyboard, FaQrcode, FaQuest
 import BottomModalSelectFile from "../Components/BottomModalSelectFile";
 import { CiCircleAlert, CiCircleQuestion } from "react-icons/ci";
 import { IoAlertCircleOutline } from "react-icons/io5";
-import BottomModalUploadFile from "../Components/BottomModalUploadFile"; 
+import BottomModalUploadFile from "../Components/BottomModalUploadFile";
 import BottomModalUploading from "../Components/BottomModalUploading";
 import { useDispatch, useSelector } from "react-redux";
 import { setModalType } from "../../redux/fileSlice";
 import BottomModalPredictBloodSugar from "../Components/BottomModalPredictBloodSugar";
+import BeforeUploadBox from "../Components/BeforeUploadBox";
 
 export default function FileUpload() {
-  const navigate = useNavigate(); 
+  const navigate = useNavigate();
   const dispatch = useDispatch()
   const { modalType } = useSelector((state) => state.file);
+  const [beforeUploadBox, setBeforeUploadBox] = useState(false)
 
   //We'll estimate a likely post-meal glucose range More logged meals → better confidence
   return (
@@ -64,16 +66,17 @@ export default function FileUpload() {
             </div>
           </div>
 
-          <div style={{ marginTop: "30px", fontSize: "14px", color: "#4F46E5", fontWeight: "600", display: "flex", alignItems: "center", gap: "10px" }}>
+          <div style={{ marginTop: "30px", fontSize: "14px", color: "#4F46E5", fontWeight: "600", display: "flex", alignItems: "center", gap: "10px",cursor:"pointer" }}>
             <FaDownload style={{ marginBottom: "15px" }} />
             <p>Download sample template (.xlsx)</p>
           </div>
 
-          <div style={{ marginTop: "10px", fontSize: "14px", color: "#4F46E5", fontWeight: "600", display: "flex", alignItems: "center", gap: "10px" }}>
+          <div onClick={_ => setBeforeUploadBox(true)} style={{ marginTop: "10px", fontSize: "14px", color: "#4F46E5", fontWeight: "600", display: "flex", alignItems: "center", gap: "10px",cursor:"pointer" }}>
             <IoAlertCircleOutline style={{ marginBottom: "15px", fontSize: "17px" }} />
             <p>See formatting rules</p>
           </div>
 
+          {beforeUploadBox && <BeforeUploadBox onClose={_ => setBeforeUploadBox(false)} />}
 
           <footer className="file-upload-footer">
             <button className="upload-btn" onClick={_ => dispatch(setModalType(("SelectFile")))}>
@@ -84,13 +87,13 @@ export default function FileUpload() {
           </footer>
 
         </div>
-      </div> 
-      {modalType === "SelectFile" && <BottomModalSelectFile  /> }
-      {modalType === "UploadFile" && <BottomModalUploadFile  /> }
-      {modalType === "Uploading" && <BottomModalUploading  /> } 
-      {modalType === "SaveData" && <BottomModalSaveData  /> } 
-      {modalType === "PredictBloodSugar" && <BottomModalPredictBloodSugar  /> }
-       
-           </div>
+      </div>
+      {modalType === "SelectFile" && <BottomModalSelectFile />}
+      {modalType === "UploadFile" && <BottomModalUploadFile />}
+      {modalType === "Uploading" && <BottomModalUploading />}
+      {modalType === "SaveData" && <BottomModalSaveData />}
+      {modalType === "PredictBloodSugar" && <BottomModalPredictBloodSugar />}
+
+    </div>
   );
 }

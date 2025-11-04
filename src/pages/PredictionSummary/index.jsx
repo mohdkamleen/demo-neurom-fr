@@ -1,151 +1,126 @@
-import React from "react";
-import { Card, Table, Button, Typography, Row, Col, Space, Progress } from "antd";
-import { ArrowLeftOutlined, ShareAltOutlined } from "@ant-design/icons";
+import React, { useState } from "react";
+import { useNavigate } from "react-router-dom";
+import "./index.css";
+import { ArrowLeftOutlined, CheckCircleFilled, CheckCircleOutlined, EyeInvisibleOutlined, EyeOutlined } from "@ant-design/icons";
+import BottomModalSaveData from "../Components/BottomModalSaveData";
+import { FaAngleRight, FaChevronRight, FaDownload, FaKeyboard, FaQrcode, FaQuestionCircle, FaRegQuestionCircle, FaShare, FaShareAlt, FaUpload } from "react-icons/fa";
+import BottomModalSelectFile from "../Components/BottomModalSelectFile";
+import { CiCircleAlert, CiCircleQuestion } from "react-icons/ci";
+import { IoAlertCircleOutline, IoShareSocialOutline } from "react-icons/io5";
+import { useDispatch, useSelector } from "react-redux";
 import { Line } from "@ant-design/plots";
+export default function PredictionSummary() {
+  const navigate = useNavigate();
+  const dispatch = useDispatch()
+  const { modalType } = useSelector((state) => state.file);
+  const [beforeUploadBox, setBeforeUploadBox] = useState(false)
 
-const { Title, Text } = Typography;
+  const data = [
+    { time: "13:00", glucose: 126 },
+    { time: "13:15", glucose: 134 },
+    { time: "13:30", glucose: 141 },
+    { time: "13:45", glucose: 145 },
+    { time: "14:00", glucose: 152 },
+    { time: "14:15", glucose: 159 },
+    { time: "14:30", glucose: 165 },
+    { time: "14:45", glucose: 168 },
+  ];
 
-const data = [
-  { time: "13:00", glucose: 126 },
-  { time: "13:15", glucose: 134 },
-  { time: "13:30", glucose: 141 },
-  { time: "13:45", glucose: 145 },
-  { time: "14:00", glucose: 152 },
-  { time: "14:15", glucose: 159 },
-  { time: "14:30", glucose: 165 },
-  { time: "14:45", glucose: 168 },
-];
-
-// Chart config (Ant Design Plot)
 const chartConfig = {
   data,
   xField: "time",
   yField: "glucose",
   smooth: true,
-  height: 200,
+  autoFit: true,
+  height: 300,
   lineStyle: { stroke: "#4f46e5", lineWidth: 3 },
   point: { size: 4, shape: "circle", style: { fill: "#4f46e5" } },
   tooltip: { showMarkers: true },
-  xAxis: { label: { autoHide: true, autoRotate: false } },
-  yAxis: { title: { text: "Glucose (mg/dL)" }, min: 120, max: 200 },
+  xAxis: {
+    title: { text: "Time" },
+    label: {
+      autoHide: false,
+      autoRotate: true,
+      style: { fontSize: 12, fill: "#555" },
+    },
+  },
+  yAxis: {
+    title: { text: "Glucose (mg/dL)" },
+    min: 120,
+    max: 200,
+  },
 };
 
-const columns = [
-  {
-    title: "Time",
-    dataIndex: "time",
-    key: "time",
-    align: "center",
-  },
-  {
-    title: "Predicted glucose (mg/dL)",
-    dataIndex: "glucose",
-    key: "glucose",
-    align: "center",
-  },
-];
-
-const PredictionSummary = () => {
+  //We'll estimate a likely post-meal glucose range More logged meals → better confidence
   return (
-    <div
-      style={{
-        backgroundColor: "#fff5f7",
-        minHeight: "100vh",
-        fontFamily: "Poppins, sans-serif",
-      }}
-    >
-      {/* Header */}
-      <Row
-        align="middle"
-        justify="space-between"
-        style={{
-          padding: "12px 16px",
-          borderBottom: "1px solid #f0f0f0",
-          backgroundColor: "#fff",
-          position: "sticky",
-          top: 0,
-          zIndex: 10,
-        }}
-      >
-        <Space>
-          <ArrowLeftOutlined style={{ fontSize: 18, cursor: "pointer" }} />
-          <Title level={5} style={{ margin: 0 }}>
-            Prediction Summary
-          </Title>
-        </Space>
-        <ShareAltOutlined style={{ fontSize: 18, cursor: "pointer" }} />
-      </Row>
-
-      {/* Range */}
-      <div style={{ textAlign: "center", marginTop: 24 }}>
-        <Text type="secondary" style={{ fontSize: 13 }}>
-          Likely range
-        </Text>
-        <Title level={2} style={{ color: "#e85d75", margin: "4px 0" }}>
-          168–190 mg/dL
-        </Title>
-        <Text strong style={{ color: "#f97316" }}>
-          Higher Range
-        </Text>
+    <div className="top-header-screen">
+      <div className="top-bar">
+        <div>
+          <span onClick={_ => navigate(-1)} className="back-arrow"><ArrowLeftOutlined /></span>
+          <h2>Prediction Summary</h2>
+        </div>
+        <div>
+          <IoShareSocialOutline style={{ fontSize: "25px", marginBottom: "10px" }} />
+        </div>
       </div>
 
-      {/* Model Accuracy */}
-      <Row justify="space-between" align="middle" style={{ padding: "16px 24px" }}>
-        <div>
-          <Text strong>Model accuracy:</Text>
-          <br />
-          <Text type="secondary" style={{ fontSize: 12 }}>
-            Improves with more recent logs
-          </Text>
+      <div className="prediction-summary-tabs">
+        <button className="active">Glucose level</button>
+        <button>Affecting Factors</button>
+      </div>
+
+      <div className="prediction-summary-body">
+
+        <div className="higher-range-div">
+          <p>Likely range</p>
+          <h3>168-190 mg/dL</h3>
+          <span>Higher Range</span>
         </div>
-        <Progress
-          type="circle"
-          percent={88}
-          size={60}
-          strokeColor="#4f46e5"
-          format={(p) => `${p}%`}
-        />
-      </Row>
 
-      {/* Chart */}
-      <Card
-        title={<Text strong>Predicted glucose trend</Text>}
-        bordered={false}
-        style={{ margin: "0 16px", borderRadius: 12, boxShadow: "0 2px 8px #f0f0f0" }}
-      >
-        <Line {...chartConfig} />
-      </Card>
+        <div className="modal-accuracy-div">
+          <div style={{ display: "flex", justifyContent: "space-between", alignItems: "center" }}>
+            <h5>Model accuracy</h5>
+            <font size="4" style={{ color: "#4F46E5", fontWeight: "600" }}>88%</font>
+          </div>
+          <b>Improves with more recent logs</b>
+        </div>
 
-      {/* Table */}
-      <Card
-        style={{
-          margin: "16px",
-          borderRadius: 12,
-          boxShadow: "0 2px 8px #f0f0f0",
-        }}
-        bodyStyle={{ padding: 0 }}
-      >
-        <Table
-          dataSource={data}
-          columns={columns}
-          pagination={false}
-          rowKey="time"
-          size="small"
-          bordered={false}
-        />
-      </Card>
+        {/* Chart */}
+        <div className="chart-section">
+          <h4>Predicted glucose trend</h4>
+          <Line {...chartConfig} />
+        </div>
 
-      {/* Footer Buttons */}
-      <Row justify="space-between" style={{ padding: 16, backgroundColor: "#fff" }}>
-        <Button type="default" style={{ borderColor: "#4f46e5", color: "#4f46e5", flex: 1, marginRight: 8 }}>
-          Add To Report
-        </Button>
-        <Button type="primary" style={{ backgroundColor: "#4f46e5", borderColor: "#4f46e5", flex: 1 }}>
-          Done
-        </Button>
-      </Row>
+        {/* Table */}
+        <div className="table-section">
+          <table>
+            <thead>
+              <tr>
+                <th>Time</th>
+                <th>Predicted glucose <br /> (mg/dL)</th>
+              </tr>
+            </thead>
+            <tbody>
+              {data.map((d, i) => (
+                <tr key={i}>
+                  <td>{d.time}</td>
+                  <td>{d.glucose}</td>
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        </div>
+
+
+        <div className="content-data-section">
+          <footer className="prediction-summary-footer">
+            <button className="trans">Add To Report</button>
+            <button>Done</button>
+          </footer>
+
+        </div>
+      </div>
+      <br />
     </div>
   );
-};
-
-export default PredictionSummary;
+}
