@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import { LoadingOutlined } from "@ant-design/icons";
 import { useDispatch, useSelector } from "react-redux";
 import * as XLSX from "xlsx";
-import { setModalType } from "../../../redux/fileSlice";
+import { setFileInfo, setModalType } from "../../../redux/fileSlice";
 import "./index.css";
 
 const BottomModalUploading = () => {
@@ -45,6 +45,7 @@ const BottomModalUploading = () => {
       const sheetName = workbook.SheetNames[0];
       const sheet = workbook.Sheets[sheetName];
       const json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
+      dispatch(setFileInfo({ ...fileInfo, json }));
 
       const headerRow = json[0];
       setDetails({
@@ -59,7 +60,7 @@ const BottomModalUploading = () => {
     reader.readAsArrayBuffer(file);
     dispatch(setModalType("SaveData"))
   };
- 
+
   return (
     <div className="upload-file-modal-box">
       <div className="modal-content">
@@ -88,7 +89,7 @@ const BottomModalUploading = () => {
           </div>
 
           <div style={{ display: "flex", alignItems: "center", gap: "10px" }}>
-           {statusText != "Header row detected" && <LoadingOutlined style={{ color: "#2563EB", fontSize: "18px" }} /> }
+            {statusText != "Header row detected" && <LoadingOutlined style={{ color: "#2563EB", fontSize: "18px" }} />}
             <b>{statusText}</b>
           </div>
 

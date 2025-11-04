@@ -1,5 +1,5 @@
 
-.upload-file-modal-box {
+.save-data-modal-box {
   width: 100%;
   height: 100%;
   position: fixed;
@@ -65,11 +65,11 @@
   background: #ebebeb;
 }
 
- .upload-file-modal-box .upload-file-data-container{
+ .save-data-modal-box .save-data-data-container{
   display: block;
   margin: auto;
   width: 328px; 
-  height: 118px; 
+  height: 145px; 
   margin-top: 10px;
   background-color: #F3F5F7;
   display: flex;
@@ -81,11 +81,11 @@
   padding: 15px;  
 }
 
- .upload-file-modal-box .upload-file-data-container:hover{
+ .save-data-modal-box .save-data-data-container:hover{
   box-shadow: 0px 0px 10px #4e46e542;
 }  
  
-.start-upload-btn{ 
+.only-save-data-btn,.save-predict-btn{ 
   background-color: #4F46E5;
   color: white;
   padding: 12px 16px;
@@ -95,10 +95,21 @@
   cursor: pointer;
   font-size: 15px;
   width: 327px;
-  height: 44px; 
-  margin: 20px 0;
+  height: 44px;  
+  margin-bottom: 15px;
 }
 
-.start-upload-btn:hover {
+.save-predict-btn{
+  background-color: transparent;
+  color: #4F46E5;
+  border: 1px solid #4F46E5;
+  margin-top: 20px;
+}
+
+.save-predict-btn:hover{
+  background-color: #ececec;
+}
+
+.only-save-data-btn:hover {
   background-color: #2735d1;
 }

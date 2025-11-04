@@ -83,11 +83,11 @@ export default function FileUpload() {
           </footer>
 
         </div>
-      </div>
-      {/* <BottomModalSaveData /> */}
+      </div> 
       {modalType === "SelectFile" && <BottomModalSelectFile  /> }
       {modalType === "UploadFile" && <BottomModalUploadFile  /> }
       {modalType === "Uploading" && <BottomModalUploading  /> } 
+      {modalType === "SaveData" && <BottomModalSaveData  /> }
 
     </div>
   );
