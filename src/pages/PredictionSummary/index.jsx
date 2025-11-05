@@ -21,16 +21,16 @@ export default function PredictionSummary() {
   { time: "15:53", predicted: 122.739998, actual: 124.2 },
   { time: "16:08", predicted: 118.839996, actual: 122.4 },
   { time: "16:23", predicted: 121.730003, actual: 115.2 },
-  { time: "16:38", predicted: 121.580002, actual: 0 }, // actual missing, please confirm
-  { time: "16:53", predicted: 115.5, actual: 0 },
-  { time: "17:08", predicted: 113.37, actual: 0 },
-  { time: "17:23", predicted: 116.05, actual: 0 },
-  { time: "17:38", predicted: 112.419998, actual: 0 },
-  { time: "17:53", predicted: 110.889999, actual: 0 },
-  { time: "18:08", predicted: 109.919998, actual: 0 },
-  { time: "18:23", predicted: 101.739998, actual: 0 },
-  { time: "18:38", predicted: 101.519997, actual: 0 },
-  { time: "18:53", predicted: 102.449997, actual: 0 },
+  { time: "16:38", predicted: 121.580002, actual: null }, // actual missing, please confirm
+  { time: "16:53", predicted: 115.5, actual: null },
+  { time: "17:08", predicted: 113.37, actual: null },
+  { time: "17:23", predicted: 116.05, actual: null },
+  { time: "17:38", predicted: 112.419998, actual: null },
+  { time: "17:53", predicted: 110.889999, actual: null },
+  { time: "18:08", predicted: 109.919998, actual: null },
+  { time: "18:23", predicted: 101.739998, actual: null },
+  { time: "18:38", predicted: 101.519997, actual: null },
+  { time: "18:53", predicted: 102.449997, actual: null },
 ];
 
 const chartConfig = {

@@ -184,6 +184,10 @@ font-size: 20px;
   padding: 5px;
   padding-left: 20px;
 }
+.table-section tbody tr td:nth-child(2),
+.table-section thead tr th:nth-child(2){
+  padding-left: 40px; 
+}
 .table-section th {
   background: #f8f8f8; 
   color: #4F46E5;
