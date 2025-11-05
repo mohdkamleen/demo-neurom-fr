@@ -115,6 +115,7 @@
   justify-content: center;
   align-items: center;
   flex-direction: column;
+  gap: 5px;
 }
 .higher-range-div h3{
 color: #EC5405;
@@ -181,7 +182,7 @@ font-size: 20px;
 .table-section th,
 .table-section td {
   padding: 5px;
-  padding-left: 45px;
+  padding-left: 20px;
 }
 .table-section th {
   background: #f8f8f8; 

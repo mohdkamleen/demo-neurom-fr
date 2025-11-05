@@ -46,12 +46,6 @@ const BottomModalUploading = () => {
       const sheet = workbook.Sheets[sheetName];
       const json = XLSX.utils.sheet_to_json(sheet, { header: 1 });
       const jsonObj = XLSX.utils.sheet_to_json(sheet, { defval: "" });
-
-      if (!json || json.length === 0) {
-        alert("Error: Excel file is empty or invalid!");
-        dispatch(setModalType("SelectFile"));
-        return;
-      }
       
       dispatch(setFileInfo({ ...fileInfo, json: jsonObj }));
 
