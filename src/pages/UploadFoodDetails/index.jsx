@@ -66,7 +66,7 @@ export default function FileUpload() {
             </div>
           </div>
 
-          <div style={{ marginTop: "30px", fontSize: "14px", color: "#4F46E5", fontWeight: "600", display: "flex", alignItems: "center", gap: "10px",cursor:"pointer" }}>
+          <div onClick={_ => window.open("/sample.csv")} style={{ marginTop: "30px", fontSize: "14px", color: "#4F46E5", fontWeight: "600", display: "flex", alignItems: "center", gap: "10px",cursor:"pointer" }}>
             <FaDownload style={{ marginBottom: "15px" }} />
             <p>Download sample template (.xlsx)</p>
           </div>

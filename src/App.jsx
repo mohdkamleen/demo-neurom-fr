@@ -1,5 +1,5 @@
 import React from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import Landing from "./pages/Landing";
 import SignIn from "./pages/SignIn";
 import Home from "./pages/Home"; 
@@ -11,12 +11,13 @@ import PredictionSummary from "./pages/PredictionSummary";
 
 
 function App() {
+  var user = localStorage.getItem("user")
   return (
     <div className="app" style={{display:"grid",placeItems:"center"}}>   
         <Routes>
           <Route path="/" element={<Landing />} />
-          <Route path="/signin" element={<SignIn />} />
-          <Route path="/home" element={<Home />} />
+          <Route path="/signin" element={user === "admin_test" ? <Navigate to="/home" /> : <SignIn />} />
+          <Route path="/home" element={user === "admin_test" ? <Home /> : <Navigate to="/signin" />} />
           <Route path="/predict" element={<Predict />} />
           <Route path="/manualentry" element={<ManualEntry />} />
           <Route path="/fileupload" element={<FileUpload />} />

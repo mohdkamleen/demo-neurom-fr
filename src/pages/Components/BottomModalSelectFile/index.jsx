@@ -12,27 +12,31 @@ import { setFileInfo, setModalType } from '../../../redux/fileSlice'
 
 const BottomModalSelectFile = () => {
   const location = useLocation()
-  const dispatch = useDispatch() 
+  const dispatch = useDispatch()
 
   const handleFileChange = (e) => {
-  const file = e.target.files[0];
-  if (!file) return;
+    const file = e.target.files[0];
+    if (!file) return;
 
-  let fileSize =
-    file.size >= 1024 * 1024
-      ? (file.size / (1024 * 1024)).toFixed(2) + " MB"
-      : (file.size / 1024).toFixed(2) + " KB";
+    const formData = new FormData();
+    formData.append("file", file);
 
-  const newFileInfo = {
-    name: file.name,
-    type: file.type,
-    size: fileSize,
-    file:file
+    let fileSize =
+      file.size >= 1024 * 1024
+        ? (file.size / (1024 * 1024)).toFixed(2) + " MB"
+        : (file.size / 1024).toFixed(2) + " KB";
+
+    const newFileInfo = {
+      name: file.name,
+      type: file.type,
+      size: fileSize,
+      file: file,
+      formData
+    };
+
+    dispatch(setFileInfo(newFileInfo)); // ✅ plain object
+    dispatch(setModalType("UploadFile"));
   };
-
-  dispatch(setFileInfo(newFileInfo)); // ✅ plain object
-  dispatch(setModalType("UploadFile"));
-};
 
   return (
     <div className="file-upload-modal-box">

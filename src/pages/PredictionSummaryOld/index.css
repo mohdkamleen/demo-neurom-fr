@@ -172,17 +172,22 @@ font-size: 20px;
   border-radius: 10px; 
 }
 .table-section table {
-  width: 100%;  
+  width: 100%; 
+  height: 342px; 
   border-collapse: collapse;
 }
 .table-section tr {
-  text-align: center;   
+  text-align: center; 
 } 
 .table-section th,
 .table-section td {
   padding: 5px;
   padding-left: 20px;
-}  
+}
+.table-section tbody tr td:nth-child(2),
+.table-section thead tr th:nth-child(2){
+  padding-left: 40px; 
+}
 .table-section th {
   background: #f8f8f8; 
   color: #4F46E5;
@@ -193,8 +198,6 @@ font-size: 20px;
   border-top: 1px solid #eee;
   color: #444;
   font-size: 13px;
-  padding-top: 10px;
-  padding-bottom: 10px;
 }
 
 

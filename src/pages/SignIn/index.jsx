@@ -40,6 +40,7 @@ export default function SignIn() {
      }
 
     if (userId === "admin_test" && password === "@demo81788") {
+      localStorage.setItem("user", "admin_test")
       navigate("/home", { replace: true });
     } else {
       alert("Invalid User ID or Password");

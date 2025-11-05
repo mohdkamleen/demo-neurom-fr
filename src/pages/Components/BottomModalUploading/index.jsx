@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from "react-redux";
 import * as XLSX from "xlsx";
 import { setFileInfo, setModalType } from "../../../redux/fileSlice";
 import "./index.css";
+import axios from "axios";
 
 const BottomModalUploading = () => {
   const dispatch = useDispatch();
@@ -59,10 +60,9 @@ const BottomModalUploading = () => {
         setStatusText("Header row detected");
       }, 500);
     };
-    reader.readAsArrayBuffer(file);
+    reader.readAsArrayBuffer(file); 
     dispatch(setModalType("SaveData"))
   };
-
   return (
     <div className="upload-file-modal-box">
       <div className="modal-content">
