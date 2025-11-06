@@ -49,6 +49,14 @@ const BottomModalUploading = () => {
       
       dispatch(setFileInfo({ ...fileInfo, json: jsonObj }));
 
+
+      //temp code
+    if(jsonObj?.length < 1300){
+     alert("Invalid file formate");
+      dispatch(setModalType("SelectFile"))
+      return
+    }
+
       const headerRow = json[0];
       setDetails({
         columns: headerRow.length,
@@ -59,6 +67,15 @@ const BottomModalUploading = () => {
         setStatusText("Header row detected");
       }, 500);
     };
+
+    //temp code to accept only csv file
+    if(!fileInfo?.type.includes("csv")){
+      alert("Invalid file type")
+      dispatch(setModalType("SelectFile"))
+      return
+    }
+
+
     reader.readAsArrayBuffer(file);
     dispatch(setModalType("SaveData"))
   };
